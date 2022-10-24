@@ -1,0 +1,41 @@
+
+kafka-topics --zookeeper zookeeper:2181 --delete --topic discounts
+
+kafka-topics --zookeeper zookeeper:2181 --alter --topic discount --config retention.ms=1000
+
+kafka-topics --zookeeper zookeeper:2181 --topic discount --describe
+
+
+kafka-topics --bootstrap-server broker:9092 --list
+
+#generate som discounts
+kafka-console-producer \
+   --topic discounts \
+   --broker-list localhost:9092 \
+   --property parse.key=true \
+   --property key.separator=,
+
+#generate some discount profiles
+kafka-console-producer \
+   --topic discount-profiles-by-user \
+   --broker-list localhost:9092 \
+   --property parse.key=true \
+   --property key.separator=,
+
+#generating order by user
+kafka-console-producer \
+   --topic orders-by-user \
+   --broker-list localhost:9092 \
+   --property parse.key=true \
+   --property key.separator=,
+
+#payments
+kafka-console-producer \
+   --topic payments \
+   --broker-list localhost:9092 \
+   --property parse.key=true \
+   --property key.separator=,
+
+kafka-console-consumer --topic discounts --bootstrap-server localhost:9092
+
+kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic first_topic
