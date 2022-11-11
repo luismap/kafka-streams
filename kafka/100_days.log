@@ -19,3 +19,51 @@ docker exec --interactive --tty broker \
 kafka-console-consumer --bootstrap-server broker:9092 \
                        --topic quickstart \
                        --from-beginning
+
+#day two
+#installing confluent cli
+curl -sL --http1.1 https://cnfl.io/cli | sh -s -- latest
+
+confluent login --save
+
+confluent environment list
+
+confluent environment use <env>
+
+confluent kafka cluster use <kafka-cluster>
+
+#use a key you already have
+confluent api-key store --resource <kafka-cluster>
+
+#create a new key
+confluent api-key create --resource <kafka-cluster>
+
+confluent api-key use <API_Key> --resource <kafka-cluster>
+
+confluent kafka topic create test-topic
+
+confluent kafka topic list
+
+confluent kafka topic produce test-topic
+
+confluent kafka topic consume -b test-topic
+
+confluent kafka client-config create <LANGUAGE> --api-key=<API_KEY> --api-secret=<API_SECRET>
+
+confluent kafka topic create --partitions 1 poems_1
+
+confluent kafka topic describe poems_1
+
+confluent kafka topic produce poems_2 --parse-key
+
+#data
+1:hello
+2:welcome
+2:to the
+3:amazing
+4:world of kafka
+1:again in partition one
+1:because of same key
+1: using the hash
+
+
