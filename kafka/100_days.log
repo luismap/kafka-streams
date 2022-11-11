@@ -1,0 +1,21 @@
+##day one
+#create topic
+docker exec broker \
+kafka-topics --bootstrap-server broker:9092 \
+             --create \
+             --topic quickstart
+
+#write some messages
+docker exec --interactive --tty broker \
+kafka-console-producer --bootstrap-server broker:9092 \
+                       --topic quickstart
+#messages
+this is my first kafka message
+hello world!
+this is my third kafka message. I’m on a roll :-D
+
+#read messages
+docker exec --interactive --tty broker \
+kafka-console-consumer --bootstrap-server broker:9092 \
+                       --topic quickstart \
+                       --from-beginning
