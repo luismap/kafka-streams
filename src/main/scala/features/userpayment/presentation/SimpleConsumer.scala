@@ -15,15 +15,15 @@ object SimpleConsumer extends  App {
   props.load(this.getClass.getResourceAsStream("/secret_kafka_cluster.properties"))
   props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
   props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
-  props.put("group.id", "simple_consumer03")
+  props.put("group.id", "simple_consumer05")
 
   val consumer: KafkaConsumer[String, String] = new KafkaConsumer[String, String](props)
-  consumer.subscribe(Pattern.compile("poems"))
+  consumer.subscribe(Pattern.compile("poems_2"))
 
   while (true) {
     val record = consumer.poll(Duration.of( 1, ChronoUnit.SECONDS))
-    for (data <- record.iterator)
-      println(data.value())
+    for (data <- record.iterator())
+      println(data)
   }
 
 
