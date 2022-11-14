@@ -1,6 +1,6 @@
 package core.utils
 
-object Topics {
+object TopicsNames {
   final val OrdersByUserTopic = "orders-by-user"
   final val DiscountProfilesByUserTopic = "discount-profiles-by-user"
   final val DiscountsTopic = "discount"
