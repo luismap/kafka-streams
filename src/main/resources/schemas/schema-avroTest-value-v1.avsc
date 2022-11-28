@@ -1,0 +1,18 @@
+{
+  "doc": "Sample schema to help you get started.",
+  "fields": [
+    {
+      "doc": "the artist",
+      "name": "artistId",
+      "type": "string"
+    },
+    {
+      "doc": "the content",
+      "name": "content",
+      "type": "string"
+    }
+  ],
+  "name": "sampleRecord",
+  "namespace": "com.mycorp.mynamespace",
+  "type": "record"
+}
